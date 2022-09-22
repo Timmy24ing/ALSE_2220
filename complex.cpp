@@ -1,4 +1,7 @@
-	Complex::Complex(){
+#include <cmath>
+#include "complex.h"
+
+Complex::Complex(){
 		re = im = 0.;
 	}
 
