@@ -14,9 +14,9 @@ int main(int argc, char** argv){
    
    
     for(int i =0; i < 6; i++){
-        aux = atof( argv[2*i+1];
+        aux = atof( argv[2*i+1] );
 	vecComplex[i].real( aux );
-        aux = atof( argv[2*i+2];
+        aux = atof( argv[2*i+2] );
 	vecComplex[i].imag( aux );
        
         vecTheta[i] = vecComplex[i].angle();
