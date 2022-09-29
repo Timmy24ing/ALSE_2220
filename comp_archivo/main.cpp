@@ -14,15 +14,15 @@ int main(int argc, char** argv){
     double aux;
     cout << "Archivo a procesar: " << argv[1] << endl;
 
-    ifstream fs;
-    fs.open ( argv[1] );
-    if ( fs.is_open() ){
+    ifstream archivo;
+    archivo.open ( argv[1] );
+    if ( archivo.is_open() ){
         cout << "archivo abierto" << endl;
-        while( !fs.eof() ){
-            fs >> aux;
+        while( !archivo.eof() ){
+            arcvhivo >> aux;
             cout << aux  << endl;
         }
-        fs.close();
+        archivo.close();
     }
    
    
