@@ -19,7 +19,7 @@ int main(int argc, char** argv){
     if ( archivo.is_open() ){
         cout << "archivo abierto" << endl;
         while( !archivo.eof() ){
-            arcvhivo >> aux;
+            archivo >> aux;
             cout << aux  << endl;
         }
         archivo.close();
