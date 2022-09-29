@@ -1,6 +1,7 @@
 #include <iostream>
 #include "complex.h"
 #include <fstream>
+#include <vector>
 
 int main(int argc, char** argv){
 
@@ -9,10 +10,10 @@ int main(int argc, char** argv){
         return 1;
     }
 
-    Complex vecComplex[6];
-    double  vecTheta[6];
+    vector<Complex> vecComplex;
+    Complex auxC;
     double aux;
-    int i = 0;
+    
     cout << "Archivo a procesar: " << argv[1] << endl;
 
     ifstream archivo;
@@ -21,26 +22,28 @@ int main(int argc, char** argv){
         cout << "archivo abierto" << endl;
         archivo >> aux;
         while( !archivo.eof() ){
-            vecComplex[i].real( aux );
+            auxC.real( aux );
             archivo >> aux;
-            vecComplex[i].imag( aux );
+            auxC.imag( aux );
+            vecComplex.push_back( auxC );
             archivo >> aux;
-            i++;
         }
         archivo.close();
+        cout << "Archivo cerrado.\n"; 
     }
    
+    double  vecTheta[ vecComplex.size() ];
    
-    for( i = 0; i < 6; i++){
+    for( int i = 0; i < vecComplex.size(); i++){
         vecTheta[i] = vecComplex[i].angle();
     }
+    cout << "Ángulos calculados\n";
    
     bool cambio;
     double auxT;
-    Complex auxC;
     do{
         cambio = false;
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < vecComplex.size() - 1; i++){
             if(vecTheta[i] > vecTheta[i+1] ){
                 cambio = true;
                 auxT = vecTheta[i];
@@ -54,15 +57,23 @@ int main(int argc, char** argv){
         }
     }while( cambio == true );
    
-    // Una vez ordenado los imprimo
-   
-    for( int i = 0; i < 6; i++)
-        cout << vecTheta[i] << ", ";
-       
-    cout << endl;
-   
-    for( int i = 0; i < 6; i++)
-        cout << vecComplex[i].real() << " + " << vecComplex[i].imag() << "j\n";
+    // Una vez ordenado los guardo en un archivo de salida
+    ofstream archivo_salida;
+    archivo_salida.open ( "Output.txt" );
 
+    if( archivo_salida.is_open() ){
+        archivo_salida << "#Este archivo contiene los ángulos y la lista ordenada de complejos\n";
+
+        for( int i = 0; i < vecComplex.size(); i++)
+            archivo_salida << vecTheta[i] << ", ";
+       
+        archivo_salida << endl;
+   
+        for( int i = 0; i < vecComplex.size(); i++)
+            archivo_salida << vecComplex[i].real() << " + " << vecComplex[i].imag() << "j\n";
+        
+        archivo_salida.close();
+    }
     return 0;
 }
+
