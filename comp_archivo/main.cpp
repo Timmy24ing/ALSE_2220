@@ -4,34 +4,34 @@
 
 int main(int argc, char** argv){
 
-    if (argc < 14 ){
-        cout << "Faltaron parámetros." << endl;
+    if (argc < 2 ){
+        cout << "Olvidó indicar la dirección del archivo que contiene la información." << endl;
         return 1;
     }
 
     Complex vecComplex[6];
     double  vecTheta[6];
     double aux;
+    int i = 0;
     cout << "Archivo a procesar: " << argv[1] << endl;
 
     ifstream archivo;
     archivo.open ( argv[1] );
     if ( archivo.is_open() ){
         cout << "archivo abierto" << endl;
+        archivo >> aux;
         while( !archivo.eof() ){
+            vecComplex[i].real( aux );
             archivo >> aux;
-            cout << aux  << endl;
+            vecComplex[i].imag( aux );
+            archivo >> aux;
+            i++;
         }
         archivo.close();
     }
    
    
-    for(int i =0; i < 6; i++){
-        aux = atof( argv[2*i+2] );
-	vecComplex[i].real( aux );
-        aux = atof( argv[2*i+3] );
-	vecComplex[i].imag( aux );
-       
+    for( i = 0; i < 6; i++){
         vecTheta[i] = vecComplex[i].angle();
     }
    
