@@ -96,6 +96,7 @@ bool Polinomio::redefinir(std::string pol) {
 }
 
 Polinomio Polinomio::operator +(Polinomio &p){
+    // Libardo y Juan
     Polinomio c;
     return c;
 }
@@ -115,6 +116,7 @@ Polinomio Polinomio::operator -(Polinomio &p){
 }
 
 Polinomio Polinomio::operator /(float f){
+    //  Andres
     Polinomio c;
     return c;
 }
@@ -170,10 +172,11 @@ void Polinomio::nuevoTermino(float c, int p){
 }
 
 void Polinomio::simplificar(){
-
+  // Anthony y Daniel
 }
 
 bool Polinomio::ordenar(){
+  //Leandor y Wilmer
     return true;
 }
 
