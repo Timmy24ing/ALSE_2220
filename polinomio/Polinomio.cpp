@@ -173,18 +173,19 @@ void Polinomio::nuevoTermino(float c, int p){
 
 void Polinomio::simplificar(){
   // Anthony y Daniel
-  Termino *F,*V,*B;
+  Termino *F,*V,*C;
   float acum = 0.;
   F = _polCabeza;
   while (F != NULL){
       V = F -> getSiguiente();
-      B = V;
+      C = V;
       if (F->getP() == V->getP()){
          acum = F->getC() + V->getC();
          F->setC(acum);
-         V->setSiguiente(B);
+         C->setSiguiente(V);
+         V = C->getSiguiente();
          F->setSiguiente(V);
-         delete B;
+         delete C;
 
       }else{
           F->setSiguiente(V);
