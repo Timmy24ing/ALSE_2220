@@ -15,10 +15,15 @@ public:
     vantana(QWidget *parent = nullptr);
     ~vantana();
 
+public slots:
+    void tipoDivi(int tipo, double esc);
+
 private slots:
     void on_cmd_Operacion_clicked();
 
 private:
     Ui::vantana *ui;
+    int     _tipoDivision;
+    double  _escalar;
 };
 #endif // VANTANA_H

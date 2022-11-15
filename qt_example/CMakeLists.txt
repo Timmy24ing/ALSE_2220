@@ -16,11 +16,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # They need to be set before the find_package(Qt5 ...) call.
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package( Eigen3 REQUIRED )
 add_executable(qt_example
     main.cpp
     vantana.cpp
     vantana.h
     vantana.ui
+    divi_diag.cpp
+    divi_diag.h
+    divi_diag.ui
 )
 
 target_link_libraries(qt_example PRIVATE Qt5::Widgets)
