@@ -35,8 +35,8 @@ public:
         return a.str();
     }
 
-    void acumularEn( int i = 0, double d ){ _dato[i] += d;}
-    double promediarEntre( int i = 0, double n ){ return _dato[i] / n ;}
+    void acumularEn( int i = 0, double d = 0 ){ _dato[i] += d;}
+    double promediarEntre( int i = 0, double n = 1 ){ return _dato[i] / n ;}
 };
 
 
